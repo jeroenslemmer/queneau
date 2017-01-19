@@ -1,0 +1,29 @@
+input.base {
+	width: 30px;
+
+}
+.new-sonnet-part{
+	margin-top: 20px;
+
+}
+
+.sonnet-line .line{
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.sonnet-line .base{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	/*background-color: #ddd;*/
+}
+
+main {
+	margin: 30px auto;
+	width: 500px;
+}
+
+#sonnet {
+	margin-bottom: 20px;
+}
