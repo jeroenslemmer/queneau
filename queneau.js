@@ -1,5 +1,4 @@
 
-
 var currentSonnet = [];
 var currentRhymeScheme = '';
 var currentSonnetSet = {};
@@ -92,7 +91,7 @@ var randomizeSonnet = function(sonnetSet){
 var randomizeCurrentSonnet = function(){
 	currentSonnet = randomizeSonnet(currentSonnetSet);
 	displayCurrentSonnet();
-	//cueAnimatePieter();
+	incrementCounter();
 }
 
 var animateOpenSonnetStep = function(sonnet){
@@ -191,10 +190,43 @@ var displayBaseSonnets = function(){
 	displayBaseSonnetTexts(container);
 }
 
+var displayCounter = function(){
+	var counter = document.createElement('div');
+	counter.id = 'counter';
+	counter.innerHTML = 'test';
+	document.getElementsByTagName('body')[0].appendChild(counter);
+	getCounter();
+	setInterval(getCounter, 600000);
+}
+
+var getCounter = function(){
+
+	var success = function(req){
+		document.getElementById('counter').innerHTML = req.response;
+	}
+
+	ajax('getcount.php', {
+		method: 'GET',
+		success: success
+	});
+}
+
+var incrementCounter = function(){
+	var success = function(req){
+		document.getElementById('counter').innerHTML = req.response;
+	}
+
+	ajax('count.php', {
+		method: 'GET',
+		success: success
+	});	
+}
+
 document.addEventListener("DOMContentLoaded", function(){
 	currentSonnetSet = sonnetSet1;
 	displaySonnetFrame(currentSonnetSet,'sonnet');
 	document.getElementById('generate').addEventListener('click',randomizeCurrentSonnet);
 	displayBaseSonnets();
+	displayCounter();
 });
 

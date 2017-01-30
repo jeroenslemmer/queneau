@@ -1,6 +1,5 @@
 .new-sonnet-part{
 	margin-top: 20px;
-
 }
 
 body {
@@ -143,6 +142,19 @@ button{
 	left: 0;
 }
 
+#counter {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	color: #f0f0ff;
+	padding: 10px;
+}
+
+#counter:hover{
+	border: 1px dashed red;
+	color: red;
+}
+
 @media print { 
  /* All your print styles go here */
 	nav { 
@@ -154,4 +166,7 @@ button{
 		margin-left: 50px;
 		color: #000000;
 	} 
+	#counter{
+		display: none;
+	}
 }
