@@ -1,6 +1,6 @@
 
 sonnetSet1 = {
-	scheme: 'abba abba ccd ccd',
+	rhymeScheme: 'abab abab ccd ccd',
 	sonnets: [
 		{
 			title: 'Een',

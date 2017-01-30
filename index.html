@@ -2,25 +2,102 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<script src="jquery-3.1.1.js"></script>
 	<script src="sonnets.js"></script>
+	<script src="rhymeschemes.js"></script>
+	<script src="text-birth.js"></script>
 	<script src="queneau.js"></script>
+	<script src="paging.js"></script>
 	<link rel="stylesheet" type="text/css" href="general.css">
-	<title>Queneau</title>
+	<title>Sonnettengenerator</title>
 </head>
 <body>
-	<main>
-	<!-- selection rhyme scheme -->
 
-	<!-- sonnets -->
-		<div id="sonnet"></div>
-	<!-- options -->
-		<button id="randomizePerLine">willekeurig sonnet</button>
-
-	<!-- templates should not be displayed-->
-		<div id="sonnetline-template" style="display:none;">
-			<button class="delta-base" delta="-1">-</button><button class="base" title="willekeurig"></button><button class="delta-base" delta="1">+</button><span class="line">test</span>
+	<div id="sonnet-universe-level">
+	<div id="sonnet-universe"></div>
+	</div>
+	<div id="pages-level">
+		<div id="pages">
+			<nav>
+				<button id="generate">genereer!</button>
+				<button id="back">sonnet</button>
+				<button id="intro">uitleg</button>
+				<button id="possibilities">hoeveel?</button>		
+			</nav>		
+			<div id="page-1" class="page">
+				<main>
+					<div id="sonnet"></div>
+				</main>
+			</div>
+			<div id="page-2" class="page">
+				<main>
+					<h3>Sonnettengenerator</h3>
+					<p>Deze Nederlandse sonnettengenerator is gebaseerd op een boek van de Franse schrijver, dichter en wiskundige Raymond Queneau (1903 – 1976): Cent mille milliards de poèmes. Het werd in 1961 uitgegeven door Gallimard. In het boek staan 10 sonnetten met dezelfde rijmklanken.</p>
+					<p>Het eerste sonnet:</p>
+					<p>Le roi de la pampa retourne sa chemise<br>
+		pour la mettre à sécher aux cornes des taureaux<br>
+		le cornédbif en boîte empeste la remise<br>
+		et fermentent de même et les cuirs et les peaux</p>
+					<p>Je me souviens encor de cette heure exeuquise<br>
+		les gauchos dans la plaine agitaient leurs drapeaux<br>
+		nous avions aussi froids que nus sur la banquise<br>
+		lorsque pour nous distraire y plantions nos tréteaux</p>
+					<p>Du pole à Rosario fait une belle trotte<br>
+		aventures on eut qui s’y pique s’y frotte<br>
+		lorsqu’on boit du maté l’on devient argentin</p>
+					<p>L’Amerique du Sud séduit les équivoques<br>
+		exaltent l’espagnol les oreilles baroques<br>
+		si la cloche se tait et son terlintintin</p>
+					<p>Je ziet: hij had zijn naam als tweede rijmklank kunnen gebruiken. Maar dat deed hij niet; hij bedacht voor de volgende negen sonnetten</p>
+					<p>naseaux, arceaux, gâteaux, fondamentaux, d’escrocs, jumeaux, idiots, escargots, tombeaux, faux, Rameaux, côteaux, veaux, fayots, normaux, nouveaux, turbots, haricots, <strong>beaux</strong>, harenceaux, châteaux, pots, provinciaux, oripeaux, <strong>beaux</strong>, mulots, sépulcraux, bateaux, arbrisseaux, eaux, mots, Morvandiaux, berceaux, verbaux, berlingots, rideaux</p>
+					<p>als rijmwoorden voor de tweede, vierde, zesde en achtste regel, nog eens 40 rijmwoorden voor de eerste, derde, vijfde en zevende regel, 20 voor de negende en tiende regel, 20 voor de elfde en veertiende regel en nog eens 20 voor de twaalfde en dertiende regel. De oplettende lezer zal een kleine onregelmatigheid hebben ontdekt: het woord beaux komt tweemaal voor. Dat klopt: de zesde regel van het tweede sonnet en de zesde regel van het achtste eindigen met het woord ‘beaux’. Het zij Queneau vergeven.</p>
+					<p>Vervolgens knipte hij elke regel van de sonnetten los van de andere (niet helemaal, anders werd het echt een zooitje). Op die manier kon je elke regel van een sonnet combineren met de overige. Elke regel bleef door de boekvorm wel op zijn eigen positie in het sonnet staan, waardoor het rijmschema behouden bleef. Zo kunnen er 10<sup>14</sup> sonnetten gegenereerd worden: 100,000,000.000.000 of op z’n Frans honderdduizendmiljard, zoals wij het uitspreken honderdbiljoen.</p>
+					<p>Stel dat je er een minuut over doet om één sonnet te lezen, dan zou je, als je ze allemaal zou lezen, en je had de tijd om dat 24 uur per dag, 365 dagen per jaar te doen, over 190.258.751 jaar uitgelezen, maar vermoedelijk ook inmiddels overleden zijn.</p>
+					<p>De Franse taal beheers ik onvoldoende om een vertaling van deze tien sonnetten te maken, laat staan van alle honderdbiljoen, dus ik bedacht wat anders. Ik schrijf tien sonnetten met gelijke rijmklanken in het Nederlands en wijd ze aan 10 Nederlandse plaatsnamen waarin de getallen 1 t/m 10 voorkomen:</p>
+					<div id="base-sonnets"></div>
+					<p>Ik besloot in het sextet (de laatste 6 regels) maar twee rijmklanken te gebruiken dus ik had nodig: 3 x 40 + 1 x 20 = 140 rijmwoorden.</p>
+					<p>Vervolgens rommelde ik wat met ingeknipte velletjes en dacht geërgerd: dit moet anders kunnen. Zou het mogelijk zijn het proces van het combineren van regels te mechaniseren in een digitaal bestand? Het antwoord op die vraag (welzeker!) kwam van de technische realisator en vormgever van deze generator Jeroen Slemmer. Hij rekende ook nog uit hoeveel sonnetten deze machine kan leveren: zoveel triljard, meer dan de honderdbiljoen van Queneau, doordat de door de boekvorm bepaalde vaste positie van de regels kon worden losgelaten.</p>
+					<p>Het getal is zo groot dat er, statistisch gezien, fantastische sonnetten zullen voorkomen, naast een ongetwijfeld opmerkelijke hoeveelheid mooi vormgegeven wartaal en onzin.</p>
+					<p>Laat je verrassen!</p>
+					<p>Pieter Breman, Dordrecht<br>
+		januari 2017<br><br><a href="mailto:p.breman12@gmail.com">p.breman12@gmail.com</a></p>
+				</main>
+			</div>
+			<div id="page-3" class="page">
+				<main>
+					<h3>Hoeveel sonnetten zijn er mogelijk?</h3>
+					<p>De verzameling mogelijke sonnetten van Queneau bevatte 'slechts' 10<sup>14</sup> mogelijkheden. Hoeveel sonnetten kunnen met deze sonnettengenerator worden gemaakt?</p>
+					<p>De sonnetten van deze generator worden geconstrueerd op basis van de regels van 10 sonnetten met elk het rijmschema: <strong>abab abab ccd ccd</strong>. In alle sonnetten samen zitten 40 a-regels, 40 b-regels, 40 c-regels en 20 d-regels.</p>
+					<h3>Sonnettenverzamelingen per rijmschema</h3> 
+					<p>De generator kiest voor elk nieuw sonnet uit verschillende mogelijke rijmschema's. Het sonnet bestaat uit een octaaf (2 x 4 regels) en een sextet (2 x 3 regels). Er zijn verschillende combinaties van octaven en sextetten mogelijk:</p>
+					<div class="inline-list">
+						<h4>Octaven:</h4>
+						<ol>
+							<li>abba abba</li>
+							<li>baab baab</li>
+							<li>abab abab</li>
+							<li>baba baba</li>
+							<li>abba baab</li>
+						</ol>
+					</div>
+					<div class="inline-list">
+						<h4>Sextetten:</h4>
+						<ol>
+							<li>ccd ccd</li>
+							<li>dcc dcc</li>
+							<li>cdc cdc</li>
+							<li>ccd dcc</li>
+							<li>cdc dcc</li>
+							<li>ccd cdc</li>
+						</ol>
+					</div>	
+					<p>In totaal levert dat 5 x 6 = 30 verzamelingen met unieke rijmschema's. Sonnetten uit de ene verzameling zullen nooit voorkomen in sonnetten van een andere verzameling.</p>
+					<h3>Mogelijkheden per verzameling</h3>
+					<p>De sonnettenverzameling met bijvoorbeeld het rijmschema: "abba abba ccd ccd" heeft: 40x40x39x39 x 38x38x37x37 x 40x39x20 x 38x37x19 mogelijkheden, ofwel: 4.010.000.000.000.000.000.000!</p>
+					<h3>Totaal</h3>
+					<p>Voor alle 30 sonnettenverzamelingen samen worden dat: 120 triljard mogelijkheden.</p>
+				</main>
+			</div>
 		</div>
-	</main>
+	</div>
 </body>
 </html>

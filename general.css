@@ -1,29 +1,157 @@
-input.base {
-	width: 30px;
-
-}
 .new-sonnet-part{
 	margin-top: 20px;
 
 }
 
-.sonnet-line .line{
-	display: inline-block;
-	margin-left: 20px;
+body {
+	background-color: #f0f0ff;
+	font-family: Verdana;
+	font-size: 18px;
+	overflow: scroll;
 }
 
-.sonnet-line .base{
-	display: inline-block;
-	width: 30px;
-	text-align: center;
-	/*background-color: #ddd;*/
+#pages-level{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
 }
 
-main {
+#pages {
 	margin: 30px auto;
-	width: 500px;
+	width: 600px;	
+	
+}
+
+.inline-list{
+	display: inline-block;
+	width: 200px;
+	vertical-align: top;
 }
 
 #sonnet {
 	margin-bottom: 20px;
+}
+
+span.word {
+	position: relative;
+	visibility: hidden;
+}
+
+span.word span.flyer{
+	display: inline-block;
+	width: 550px;
+	position: absolute;
+	top: 10000px;
+	left: 10000px;
+	visibility: visible;
+}
+
+#generate{
+	margin-bottom: 20px;
+}
+
+#line-99{
+	font-size: 18px;
+	margin-top: 20px;
+}
+
+#page-1{
+	margin-top: 40px;
+	display: block;
+	color: #609E06;
+}
+
+#page-2, #page-3{
+	font-size: 12px;
+}
+
+.page{
+	display: none;
+}	
+.inline-list h4, .inline-list ol{
+	margin: 0 0px;
+	padding: 0;
+}
+.inline-list ol{
+	padding-left: 15px;
+}
+
+.base-sonnet{
+	margin-top: 50px;
+}
+
+#base-sonnets{
+
+}
+
+#back{
+	display: none;
+}
+
+button{
+	width: 100px;
+}
+
+#base-sonnet-titles span{
+	cursor: pointer;
+	color: blue;
+}
+
+#base-sonnet-titles span:hover{
+	text-decoration: underline;
+}
+
+#base-sonnet-texts {
+
+	position: relative;
+	margin: 0 auto;
+	top: -30px;
+}
+
+#base-sonnet-texts div {
+	position: absolute;
+	height: 0;	
+	width: 350px;
+	left: 50%;
+	transform:translateX(-50%);
+	display: none;
+	margin-top: 20px;
+	padding: 20px;
+	border: 1px solid black;
+	background-color: rgba(255,255,255,0.9);
+	overflow: hidden;
+}
+
+#sonnet-universe-level{
+	/*display: none;*/
+}
+
+#sonnet-universe {
+	position: relative;
+	color: lightgrey;
+	width: 600px;
+	margin: 0 auto;
+}
+
+#sonnet-universe div {
+	display: none;
+	width: 550px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+@media print { 
+ /* All your print styles go here */
+	nav { 
+ 		display: none !important; 
+
+	}
+	#page-1 {
+		margin-top: 100px;
+		margin-left: 50px;
+		color: #000000;
+	} 
 }
