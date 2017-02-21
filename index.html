@@ -2,27 +2,26 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="log.js"></script>
 	<script src="ajax.js"></script>
 	<script src="sonnets.js"></script>
 	<script src="rhymeschemes.js"></script>
 	<script src="text-birth.js"></script>
 	<script src="queneau.js"></script>
 	<script src="paging.js"></script>
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="general.css">
 	<title>Sonnettengenerator</title>
 </head>
 <body>
-
 	<div id="sonnet-universe-level">
 	<div id="sonnet-universe"></div>
 	</div>
 	<div id="pages-level">
 		<div id="pages">
 			<nav>
-				<button id="generate">genereer!</button>
-				<button id="back">sonnet</button>
-				<button id="intro">uitleg</button>
-				<button id="possibilities">hoeveel?</button>		
+				<button id="back">sonnet</button><button id="generate">genereer!</button><button id="intro">uitleg</button><button id="possibilities">hoeveel?</button>		
 			</nav>		
 			<div id="page-1" class="page">
 				<main>
@@ -51,7 +50,7 @@
 					<p>Je ziet: hij had zijn naam als tweede rijmklank kunnen gebruiken. Maar dat deed hij niet; hij bedacht voor de volgende negen sonnetten</p>
 					<p>naseaux, arceaux, gâteaux, fondamentaux, d’escrocs, jumeaux, idiots, escargots, tombeaux, faux, Rameaux, côteaux, veaux, fayots, normaux, nouveaux, turbots, haricots, <strong>beaux</strong>, harenceaux, châteaux, pots, provinciaux, oripeaux, <strong>beaux</strong>, mulots, sépulcraux, bateaux, arbrisseaux, eaux, mots, Morvandiaux, berceaux, verbaux, berlingots, rideaux</p>
 					<p>als rijmwoorden voor de tweede, vierde, zesde en achtste regel, nog eens 40 rijmwoorden voor de eerste, derde, vijfde en zevende regel, 20 voor de negende en tiende regel, 20 voor de elfde en veertiende regel en nog eens 20 voor de twaalfde en dertiende regel. De oplettende lezer zal een kleine onregelmatigheid hebben ontdekt: het woord beaux komt tweemaal voor. Dat klopt: de zesde regel van het tweede sonnet en de zesde regel van het achtste eindigen met het woord ‘beaux’. Het zij Queneau vergeven.</p>
-					<p>Vervolgens knipte hij elke regel van de sonnetten los van de andere (niet helemaal, anders werd het echt een zooitje). Op die manier kon je elke regel van een sonnet combineren met de overige. Elke regel bleef door de boekvorm wel op zijn eigen positie in het sonnet staan, waardoor het rijmschema behouden bleef. Zo kunnen er 10<sup>14</sup> sonnetten gegenereerd worden: 100,000,000.000.000 of op z’n Frans honderdduizendmiljard, zoals wij het uitspreken honderdbiljoen.</p>
+					<p>Vervolgens knipte hij elke regel van de sonnetten los van de andere (niet helemaal, anders werd het echt een zooitje). Op die manier kon je elke regel van een sonnet combineren met de overige. Elke regel bleef door de boekvorm wel op zijn eigen positie in het sonnet staan, waardoor het rijmschema behouden bleef. Zo kunnen er 10<sup>14</sup> sonnetten gegenereerd worden: 100.000.000.000.000 of op z’n Frans honderdduizendmiljard, zoals wij het uitspreken honderdbiljoen.</p>
 					<p>Stel dat je er een minuut over doet om één sonnet te lezen, dan zou je, als je ze allemaal zou lezen, en je had de tijd om dat 24 uur per dag, 365 dagen per jaar te doen, over 190.258.751 jaar uitgelezen, maar vermoedelijk ook inmiddels overleden zijn.</p>
 					<p>De Franse taal beheers ik onvoldoende om een vertaling van deze tien sonnetten te maken, laat staan van alle honderdbiljoen, dus ik bedacht wat anders. Ik schrijf tien sonnetten met gelijke rijmklanken in het Nederlands en wijd ze aan 10 Nederlandse plaatsnamen waarin de getallen 1 t/m 10 voorkomen:</p>
 					<div id="base-sonnets"></div>
@@ -61,6 +60,7 @@
 					<p>Laat je verrassen!</p>
 					<p>Pieter Breman, Dordrecht<br>
 		januari 2017<br><br><a href="mailto:p.breman12@gmail.com">p.breman12@gmail.com</a></p>
+		<p>PS Net zoals Queneau met de herhaling van het rijmwoord ‘beaux’ een schoonheidsfoutje (gezien het woord misschien bewust, want letterlijk) heeft gemaakt, heb ik ook een foutje op het gebied van de rijmwoorden verstopt in deze generator. De fout is niet moeilijk te vinden, want komt ruim 12 triljard keer voor.
 				</main>
 			</div>
 			<div id="page-3" class="page">
@@ -68,10 +68,10 @@
 					<h3>Hoeveel sonnetten zijn er mogelijk?</h3>
 					<p>De verzameling mogelijke sonnetten van Queneau bevatte 'slechts' 10<sup>14</sup> mogelijkheden. Hoeveel sonnetten kunnen met deze sonnettengenerator worden gemaakt?</p>
 					<p>De sonnetten van deze generator worden geconstrueerd op basis van de regels van 10 sonnetten met elk het rijmschema: <strong>abab abab ccd ccd</strong>. In alle sonnetten samen zitten 40 a-regels, 40 b-regels, 40 c-regels en 20 d-regels.</p>
-					<h3>Sonnettenverzamelingen per rijmschema</h3> 
+					<h4>Sonnettenverzamelingen per rijmschema</h4> 
 					<p>De generator kiest voor elk nieuw sonnet uit verschillende mogelijke rijmschema's. Het sonnet bestaat uit een octaaf (2 x 4 regels) en een sextet (2 x 3 regels). Er zijn verschillende combinaties van octaven en sextetten mogelijk:</p>
 					<div class="inline-list">
-						<h4>Octaven:</h4>
+						<strong>Octaven:</strong>
 						<ol>
 							<li>abba abba</li>
 							<li>baab baab</li>
@@ -81,7 +81,7 @@
 						</ol>
 					</div>
 					<div class="inline-list">
-						<h4>Sextetten:</h4>
+						<strong>Sextetten:</strong>
 						<ol>
 							<li>ccd ccd</li>
 							<li>dcc dcc</li>
@@ -92,10 +92,10 @@
 						</ol>
 					</div>	
 					<p>In totaal levert dat 5 x 6 = 30 verzamelingen met unieke rijmschema's. Sonnetten uit de ene verzameling zullen nooit voorkomen in sonnetten van een andere verzameling.</p>
-					<h3>Mogelijkheden per verzameling</h3>
-					<p>De sonnettenverzameling met bijvoorbeeld het rijmschema: "abba abba ccd ccd" heeft: 40x40x39x39 x 38x38x37x37 x 40x39x20 x 38x37x19 mogelijkheden, ofwel: 4.010.000.000.000.000.000.000!</p>
-					<h3>Totaal</h3>
-					<p>Voor alle 30 sonnettenverzamelingen samen worden dat: 120 triljard mogelijkheden.</p>
+					<h4>Mogelijkheden per verzameling</h4>
+					<p>De sonnettenverzameling met bijvoorbeeld het rijmschema: "abba abba ccd ccd" heeft: 40x40x39x39 x 38x38x37x37 x 40x39x20 x 38x37x19 mogelijkheden, ofwel: 4.009.713.601.469.921.280.000!</p>
+					<h4>Totaal</h4>
+					<p>Voor alle 30 sonnettenverzamelingen samen worden dat ruim <span class="bignumber">120 triljard mogelijkheden. <span>&nbsp;(om precies te zijn: 120.291.408.044.097.638.400.000)</span></span><br><br></p>
 				</main>
 			</div>
 		</div>

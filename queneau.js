@@ -1,4 +1,3 @@
-
 var currentSonnet = [];
 var currentRhymeScheme = '';
 var currentSonnetSet = {};
@@ -18,7 +17,7 @@ var displaySonnetFrame = function(sonnetSet, boxId){
 	// create sonnet frame
 	var newSonnetPart = false;
 	var l = 0;
-	for (let c = 0; c < sonnetSet.rhymeScheme.length; c++){
+	for (var c = 0; c < sonnetSet.rhymeScheme.length; c++){
 		if (sonnetSet.rhymeScheme.charAt(c) != ' '){
 			box.appendChild(createSonnetFrameLine(l, newSonnetPart));
 			l++;
@@ -33,6 +32,7 @@ var displaySonnetFrame = function(sonnetSet, boxId){
 	box.appendChild(name);
 }
 
+
 var displayCurrentSonnetLine = function(lineNr){
 	var line = document.getElementById('line-'+lineNr.toString());
 	displayLine(currentSonnet.lines[lineNr], lineNr, '$');
@@ -40,7 +40,7 @@ var displayCurrentSonnetLine = function(lineNr){
 
 var displayCurrentSonnet = function(){
 	resetAnimation();
-	for (let l in currentSonnet.lines){
+	for (var l in currentSonnet.lines){
 		displayCurrentSonnetLine(l);
 	}
 	startAnimation();
@@ -54,7 +54,7 @@ var randomizeRhymeScheme = function(){
 
 var getRhymeCharacterMap = function(rhymeCharacter, rhymeScheme){
 	var map = [];
-	for (let l = 0; l < rhymeScheme.length; l++){
+	for (var l = 0; l < rhymeScheme.length; l++){
 		if (rhymeScheme.charAt(l) == rhymeCharacter) map.push(l);
 	}
 	return map;
@@ -69,7 +69,7 @@ var getRandomLineFromBaseSonnet = function(lineNr,baseNr,sonnetSet){
 }
 
 var lineExists = function(line, lines){
-	for (let l in lines){
+	for (var l in lines){
 		if (line === lines[l]) return true;
 	}
 	return false;
@@ -78,8 +78,8 @@ var lineExists = function(line, lines){
 var randomizeSonnet = function(sonnetSet){
 	randomizeRhymeScheme();
 	sonnet = {title: '', lines: []};
-	for (let l = 0; l < sonnetSet.sonnets[0].lines.length; l++){
-		let baseNr = Math.floor(Math.random() * sonnetSet.sonnets.length);
+	for (var l = 0; l < sonnetSet.sonnets[0].lines.length; l++){
+		var baseNr = Math.floor(Math.random() * sonnetSet.sonnets.length);
 		do {
 			var line = getRandomLineFromBaseSonnet(l, baseNr, sonnetSet);
 		} while (lineExists(line, sonnet.lines));
@@ -101,16 +101,23 @@ var animateOpenSonnetStep = function(sonnet){
 	setTimeout(animateOpenSonnetStep,10,sonnet);
 }
 
-
 var animateOpenSonnet = function(sonnet){
 	sonnet.myHeight = 30;
 	setTimeout(animateOpenSonnetStep,20,sonnet);
 }
 
+var hideSonnetsExept = function(indexEx){
+	for (var index = 0; index < currentSonnetSet.sonnets.length; index++){
+		if (index != indexEx){
+			document.getElementById('sonnet-'+index).style.display = 'none';
+		}
+	}
+}
 
 var showSonnet = function(event){
 	var title = event.target;
 	var index = title.id.replace('title-','');
+	hideSonnetsExept(index);
 	var sonnet = document.getElementById('sonnet-'+index);
 	sonnet.style.display = 'block';
 	animateOpenSonnet(sonnet);
@@ -124,12 +131,24 @@ var hideSonnet = function(event){
 	sonnet.style.display = 'none';
 }
 
+var hideShowedSonnet  = function(event){
+	var sonnet = event.target;
+	if (!sonnet.id) sonnet = event.target.parentElement;
+	sonnet.myHeight = 30;
+	sonnet.style.display = 'none';
+}
+
 var displayListTitle = function(sonnet,index,titleContainer){
 	var title = document.createElement('SPAN');
 	title.id = 'title-'+index;
 	title.innerHTML = sonnet.title;
+	
 	title.addEventListener('mouseenter',showSonnet);
 	title.addEventListener('mouseleave',hideSonnet);
+
+	if (isTouchDevice()){
+		title.addEventListener('click',showSonnet);
+	}
 	titleContainer.appendChild(title);
 }
 
@@ -170,6 +189,7 @@ var displayBaseSonnetText = function(sonnet, rhymeScheme, index, textContainer){
 		}
 	}
 	sonnetContainer.appendChild(part);
+	sonnetContainer.addEventListener('click',hideShowedSonnet)
 	textContainer.appendChild(sonnetContainer);
 }
 
@@ -222,6 +242,11 @@ var incrementCounter = function(){
 	});	
 }
 
+var isTouchDevice = function() {
+  return 'ontouchstart' in window        // works on most browsers 
+      || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+};
+
 document.addEventListener("DOMContentLoaded", function(){
 	currentSonnetSet = sonnetSet1;
 	displaySonnetFrame(currentSonnetSet,'sonnet');
@@ -229,4 +254,3 @@ document.addEventListener("DOMContentLoaded", function(){
 	displayBaseSonnets();
 	displayCounter();
 });
-

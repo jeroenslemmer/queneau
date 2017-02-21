@@ -6,6 +6,15 @@ var btextColor = 'f0f0ff';
 var colorChannels = [parseInt(textColor.substr(0,2),16),parseInt(textColor.substr(2,2),16),parseInt(textColor.substr(4,2),16)];
 var bcolorChannels = [parseInt(btextColor.substr(0,2),16),parseInt(btextColor.substr(2,2),16),parseInt(btextColor.substr(4,2),16)];
 
+if (!Math.sign){
+	Math.sign = function (number){
+		if (number > 0) return 1;
+		if (number < 0) return -1;
+		if (number == 0) return 0;
+		if (number == -0) return -0;
+		return NaN;
+	}
+}
 // constructor for cue that organizes animation of unlimited number of elements
 var AnimationCue = function(intervalTime){
 	var _this = this;
@@ -80,7 +89,7 @@ var animationPart = function(flyer,time){
 		var channelRed = parseInt(textColor.substr(0,2),16);
 		var channelGFinal = parseInt()
 		var nextColor = '#';
-		for (let i = 0; i < 3; i++){
+		for (var i = 0; i < 3; i++){
 			nextColor += (Math.floor(Math.min(colorChannels[i]+flyer.flight.radius*3,255))).toString(16);
 		}
 
@@ -102,7 +111,7 @@ var animationPart = function(flyer,time){
 var animationFrame = function(){
 	animateBaseSonnets2();
 	flown = false;
-	for (let f in flyers){
+	for (var f in flyers){
 		flown = animationPart(flyers[f],animationTime) || flown;
 	}
 	animationTime += 1;
@@ -143,8 +152,8 @@ var displayLine = function(lineTxt, lineNr, splitBy){
 	var line = document.getElementById('line-'+lineNr);
 	lineTxt = lineTxt.replace('  ',' ');
 	var words = lineTxt.split(splitBy);
-	for (let i in words){
-		let wordElement = createWordElement(words[i]);
+	for (var i in words){
+		var wordElement = createWordElement(words[i]);
 		flyers.push(wordElement.firstElementChild);
 		line.appendChild(wordElement);
 		line.appendChild(document.createTextNode(' '));
@@ -159,7 +168,7 @@ var preparePieter = function(){
 
 var animateBaseBackcolor = function(base,thresholdStart, thresholdStop ){
 	if (Math.abs(base.myLeft) < thresholdStart && Math.abs(base.myLeft) > thresholdStop){
-		for (let c in base.myChannels){
+		for (var c in base.myChannels){
 			if (base.myChannels[c] < bcolorChannels[c]){
 				base.myChannels[c] = Math.min(base.myChannels[c]+1,255);
 			}
@@ -171,7 +180,7 @@ var animateBaseBackcolor = function(base,thresholdStart, thresholdStop ){
 var animateBaseSonnets2 = function(){
 	var child;
 	var container = document.getElementById('sonnet-universe');
-	for (let e = 0; e < container.children.length; e++){
+	for (var e = 0; e < container.children.length; e++){
 		child = container.children[e];
 		animateBaseBackcolor(child,300,0);
 	}
@@ -181,15 +190,15 @@ var animateBaseSonnets = function(){
 	var child;
 	var animated = false;
 	var container = document.getElementById('sonnet-universe');
-	for (let e = 0; e < container.children.length; e++){
+	for (var e = 0; e < container.children.length; e++){
 		child = container.children[e];
+
 		child.style.left = Math.round(child.myLeft) + 'px';
 
 		if (Math.abs(child.myLeft - child.myLeftEnd) > child.myDeltaLeft) {
 			child.myLeft += -1 * Math.sign(child.myLeft - child.myLeftEnd) * child.myDeltaLeft;
 			animated = true;
 		}
-
 		animateBaseBackcolor(child,700,300);
 	}
 	return animated;
@@ -199,7 +208,7 @@ var prepareBaseSonnetsAnimation = function(){
 	
 	var container = document.getElementById('sonnet-universe');
 	var child, sign;
-	for (let e = 0; e < container.children.length; e++){
+	for (var e = 0; e < container.children.length; e++){
 		child = container.children[e];
 
 		sign = ([-1,1])[Math.floor(Math.random()*2)];
@@ -216,7 +225,7 @@ var prepareBaseSonnetsAnimation = function(){
 
 var endBaseSonnets = function(){
 	var container = document.getElementById('sonnet-universe');
-	for (let e = 0; e < container.children.length; e++){
+	for (var e = 0; e < container.children.length; e++){
 		container.children[e].style.display = 'none';
 	}
 }
@@ -225,11 +234,10 @@ var endSonnet = function(){
 	var flyers = document.getElementsByClassName('flyer');
 	for (var f = 0; f < flyers.length; f++){
 		flyers[f].style.color = '';
-		//delete flyers[f].style['color'];
 	}
 }
 
-var startAnimation = function(){
+var startAnimation = function(){	
 	animationTime = 0;
 	prepareBaseSonnetsAnimation();
 	animationCue.push('generate',hideButtons);
@@ -246,6 +254,6 @@ var startAnimation = function(){
 
 var resetAnimation = function(){
 	var divs = document.getElementsByClassName('line');
-	for (let i in divs) divs[i].innerHTML ='';
+	for (var i in divs) divs[i].innerHTML ='';
 }
 
